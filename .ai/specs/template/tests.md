@@ -70,6 +70,16 @@ Estresse executado: `go test -race -count=__ -cpu=1,2,4 -run '...' ./...` → re
 (saída do benchstat)
 ```
 
+## Validação em ambiente (se a spec marcar `validacao-ambiente.md`)
+
+> Roteiro em `plano-validacao-ambiente.md`; artefatos locais em `evidencias/`. Registre o observado, não só o esperado. Bloqueado não equivale a aprovado.
+
+- Conta/região/stage e versão publicada testada:
+
+| Passo | Cobre (RN/CA/CC/DP) | Esperado | Observado | Confirmação por leitura | Evidência | Status |
+|---|---|---|---|---|---|---|
+| | | | | | | ⬜ pendente / ✅ passou / ❌ falhou / 🚫 bloqueado |
+
 ## Casos de borda cobertos
 
 - [ ]

@@ -25,6 +25,7 @@ Condicionais:
 | Pacote com goroutines novas | `goleak.VerifyTestMain(m)` no `TestMain` |
 | `DPxx` ou otimização | `go test -run '^$' -bench . -benchmem -count=10` + `benchstat antes.txt depois.txt` |
 | Parser de entrada externa | `go test -run '^$' -fuzz FuzzX -fuzztime 30s ./internal/<pkg>` |
+| Spec marca `validacao-ambiente.md` | Roteiro `plano-validacao-ambiente.md` executado na stack publicada (`validacao-ambiente.md`); passo bloqueado limita a "Aprovada com pendências" |
 
 `-race` pode exigir `CGO_ENABLED=1` e compilador C **só no teste**. Registre no `infraestrutura-testes.md` como ele roda no ambiente. O binário de produção continua sem CGO.
 
@@ -143,7 +144,7 @@ Teste obrigatoriamente, chamando o handler com eventos de `testdata/`:
 - prazo curto (via synctest);
 - mesma mensagem duas vezes (idempotência).
 
-Executar o runtime local (SAM, LocalStack) é opcional e fica descrito no `infraestrutura-testes.md`.
+Executar o runtime local (SAM, LocalStack) é opcional e fica descrito no `infraestrutura-testes.md`. IAM, formato real do evento, configuração e empacotamento publicados só são provados na stack de teste (`validacao-ambiente.md`).
 
 ## 7. Cobertura
 

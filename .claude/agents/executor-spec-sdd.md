@@ -28,6 +28,7 @@ Você está sempre no caminho "a tarefa já tem spec". Nunca cria spec, nunca ca
   - DynamoDB → `dados-dynamodb.md`;
   - Postgres → `dados-postgres.md`;
   - `DPxx` → `performance-e-custo.md`.
+  - `validacao-ambiente.md` nunca é deduzido: só entra se o desenvolvedor marcou.
 - **Spec sem IDs:** atribua `RN01`, `CA01`... na ordem em que aparecem, grave-os na spec e registre.
 - **Arquitetura da tabela inexistente:** não implemente. Registre, conclua "Reprovada" (motivo: rodar a Fase 0 para o projeto) e encerre.
 - **Projeto fora da tabela necessário:** não altere nem leia a arquitetura dele. Registre e deixe pendência; a conclusão é no máximo "Aprovada com pendências".
@@ -84,6 +85,7 @@ Nunca retorne antes de o ciclo terminar ou estar explicitamente bloqueado.
 - Escreva os testes do plan e de `.ai/go/testes.md`, inclusive o teste de cada `CCxx`.
 - Rode os portões 1–8 de `.ai/go/testes.md` e, com `CCxx`, o estresse de concorrência.
 - Execute o plano de medição dos `DPxx` quando o ambiente permitir; senão, deixe pendência.
+- **Validação em ambiente** (spec marca `validacao-ambiente.md`): preencha o `plano-validacao-ambiente.md`, mas **não execute nenhum passo contra a conta AWS** (nem leitura, nem `invoke`, nem deploy). Deixe a execução como pendência para o desenvolvedor; a conclusão é no máximo "Aprovada com pendências" (`validacao-ambiente.md`, seção 7).
 - Ferramenta ausente (golangci-lint, govulncheck) não é pulada em silêncio: registre, use o mínimo equivalente (`staticcheck`, `go vet`) e deixe pendência.
 - Documente tudo no `tests.md`, inclusive a tabela de portões.
 - Se a sua feature mudou a infra de testes, atualize só as linhas afetadas do `infraestrutura-testes.md`, com o que você verificou, e a data de "Última verificação prática". Limitação resolvida é marcada, não apagada. Registre no `build-logs.md` e cite no `review.md`.

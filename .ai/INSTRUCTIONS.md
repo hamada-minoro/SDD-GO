@@ -44,11 +44,11 @@ Antes de escrever a spec, crie a pasta da feature com o **próximo número da se
 
 A **primeira** seção a preencher na `spec.md` é "Projetos e arquiteturas envolvidos": com base no mapa do `architecture.md`, liste cada projeto que a feature altera e o caminho do `architecture-<projeto>.md` dele. Essa tabela é repetida no `plan.md` (com a ordem entre projetos) e vira itens de leitura na "Preparação" do `tasks.md`. É ela que limita o que a IA lê antes de executar: o mapa mais esses arquivos, nada além (`README.md`, seção 3.2).
 
-Logo depois, marque em "Guias Go aplicáveis" quais guias condicionais entram (`api-http.md`, `lambda-aws.md`, `dados-dynamodb.md`, `dados-postgres.md`, `performance-e-custo.md`).
+Logo depois, marque em "Guias Go aplicáveis" quais guias condicionais entram (`api-http.md`, `lambda-aws.md`, `dados-dynamodb.md`, `dados-postgres.md`, `performance-e-custo.md`, `validacao-ambiente.md`). Marque `validacao-ambiente.md` quando a entrega depender do que só a stack publicada em teste prova (IAM, gatilho real, configuração, empacotamento); o roteiro fica no `plano-validacao-ambiente.md` da spec.
 
 Use o prompt **"1. Iniciar uma feature do zero"** em `prompts.md`.
 
-A IA deve devolver uma especificação organizada e também apontar dúvidas, lacunas e riscos.
+A IA deve devolver uma especificação organizada e também apontar dúvidas, lacunas e riscos. Se alguma dúvida mudar uma regra de negócio (inclusive falha parcial, idempotência e ordem), ela para depois da spec e pergunta antes de fazer o plano, porque o desenho de concorrência e os prazos dependem da resposta. Dúvidas que não mudam regra viram premissas na spec.
 
 Duas seções são o coração do SDD-GO e **nunca ficam vazias**:
 

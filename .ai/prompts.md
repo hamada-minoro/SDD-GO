@@ -136,7 +136,7 @@ Fluxo obrigatório:
    envolvidos" da spec.md (pasta do projeto + tipo de entrega + caminho do
    .ai/architecture-<projeto>.md + o que muda) e a lista "Guias Go
    aplicáveis" (api-http.md, lambda-aws.md, dados-dynamodb.md,
-   dados-postgres.md, performance-e-custo.md). Leia
+   dados-postgres.md, performance-e-custo.md, validacao-ambiente.md). Leia
    somente essas arquiteturas e esses guias — não os de outros projetos.
    A mesma tabela deve aparecer no plan.md (com a ordem entre os projetos)
    e virar um item "Ler ..." por arquivo na seção "Preparação" do tasks.md;
@@ -145,7 +145,10 @@ Fluxo obrigatório:
    .ai/go/concorrencia.md que o contexto não responder, e transforme as
    respostas em CCxx escritos em linguagem de negócio. Na seção
    "Desempenho, escala e custo", proponha DPxx mensuráveis e pergunte os
-   números que faltarem;
+   números que faltarem. Liste à parte dúvidas, lacunas e riscos. Se
+   alguma dúvida mudar uma regra de negócio (inclusive falha parcial,
+   idempotência e ordem), pare depois da spec e me pergunte antes de
+   seguir; dúvidas que não mudam regra viram premissas na spec;
 2. depois revise criticamente a spec: trabalho independente sem CCxx?
    CCxx que ignora a capacidade downstream? estado compartilhado sem
    critério de consistência? falha parcial e idempotência definidas? DPxx

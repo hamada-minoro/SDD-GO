@@ -130,6 +130,7 @@ Capacidade downstream considerada (Lei de Little, `.ai/go/concorrencia.md` seç�
 - Fuzz (entradas externas):
 - Benchmarks (`DPxx` / otimizações):
 - Carga (se houver `DPxx` de sistema):
+- Validação em ambiente (se a spec marcar `validacao-ambiente.md`): fluxos, RN/CA/CC/DP a provar na stack publicada, leitura de confirmação de cada um, stage e dados necessários. Detalhe o roteiro em `plano-validacao-ambiente.md`.
 
 ## Plano de medição de desempenho
 

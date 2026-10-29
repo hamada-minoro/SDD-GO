@@ -72,6 +72,20 @@ compose, migrations, seeds, variáveis obrigatórias).
 
 Descreva, se o projeto usar: como invocar a função localmente (SAM CLI `sam local invoke`, LocalStack, ou só testes Go chamando o handler com eventos de `testdata/`), e como rodar a imagem/binário ARM64 localmente (emulação QEMU via `docker run --platform linux/arm64`, se disponível).
 
+## Ambiente de teste/homologação (stack publicada)
+
+> Preencha com fatos verificados antes de executar um `plano-validacao-ambiente.md`. O procedimento está em `.ai/go/validacao-ambiente.md`. Não registre valores de credenciais.
+
+- Conta AWS de teste (ID) e região; como confirmar (`aws sts get-caller-identity`) antes de gravar:
+- Perfil/identidade de teste e permissões; nomes das variáveis exigidas (sem valores):
+- Stages/aliases e como fazer o deploy de teste (comando da IaC, tempo médio, como conferir a versão publicada):
+- Endpoints de teste (API Gateway/Function URL) e health checks (código/resposta esperados):
+- Filas, tópicos, tabelas e buckets de teste, com DLQs:
+- Log groups e métricas usados para confirmação:
+- Dependências externas: sandbox disponível? horários de disponibilidade verificados:
+- Como preparar e limpar dados de teste com segurança (prefixo de chave, TTL, script de limpeza):
+- Ações proibidas neste ambiente (ex.: carga em ambiente compartilhado, envio real de e-mail):
+
 ## Testes de carga
 
 Descreva, se o projeto tiver: ferramenta (Locust, k6, vegeta), onde ficam os cenários, como rodar, limites de CPU/memória usados e onde ficam os resultados.

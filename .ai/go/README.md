@@ -15,6 +15,7 @@
 | [`dados-dynamodb.md`](dados-dynamodb.md) | Se a spec marcar | Modelagem por padrão de acesso, idempotência, batch, capacidade |
 | [`dados-postgres.md`](dados-postgres.md) | Se a spec marcar | `pgxpool`, transações, locks, `ON CONFLICT`, RDS Proxy |
 | [`performance-e-custo.md`](performance-e-custo.md) | Se a spec tiver `DPxx` | Métricas, metodologia, pprof, PGO, custo ARM vs x86 |
+| [`validacao-ambiente.md`](validacao-ambiente.md) | Se a spec marcar | Validação na stack publicada em teste: IAM, evento real, configuração, empacotamento arm64, segurança das escritas, evidências e limpeza |
 | [`referencias/estudo-node-vs-go.md`](referencias/estudo-node-vs-go.md) | Nunca (humanos) | Benchmark de origem, lições e pesquisa Go + ARM + AWS |
 
 ## 2. Benefício de Go → diretriz do framework

@@ -81,7 +81,8 @@ projeto/
 │   ├── ai-instructions.md             # IA: fonte única do fluxo, leitura, numeração e regras
 │   ├── architecture.md                # visão geral; em raiz multiprojeto, o mapa do ecossistema
 │   ├── architecture-<projeto>.md      # obrigatório em raiz multiprojeto: um por pasta de projeto
-│   ├── infraestrutura-testes.md       # referência verificada do ambiente local de testes
+│   ├── infraestrutura-testes.md       # referência verificada do ambiente local e do ambiente de teste
+│   ├── .gitignore                     # exclui .env e evidencias/ das specs
 │   ├── go/                            # guias da linguagem (seção 4.9)
 │   │   ├── README.md                  # humanos: índice + benefícios de Go → diretrizes
 │   │   ├── idiomatico.md              # IA: sempre
@@ -93,6 +94,7 @@ projeto/
 │   │   ├── dados-dynamodb.md          # IA: se a spec marcar
 │   │   ├── dados-postgres.md          # IA: se a spec marcar
 │   │   ├── performance-e-custo.md     # IA: se a spec tiver DPxx
+│   │   ├── validacao-ambiente.md      # IA: se a spec marcar (validação na stack publicada)
 │   │   └── referencias/
 │   │       └── estudo-node-vs-go.md   # humanos: benchmark de origem e pesquisa
 │   └── specs/
@@ -102,7 +104,8 @@ projeto/
 │       │   ├── tasks.md
 │       │   ├── build-logs.md
 │       │   ├── tests.md
-│       │   └── review.md
+│       │   ├── review.md
+│       │   └── plano-validacao-ambiente.md  # opcional: roteiro da validação na stack publicada
 │       ├── concluidos/                # specs finalizadas e aprovadas são movidas para cá (mantêm o número)
 │       │   └── 001-nome-da-feature/
 │       └── 002-nome-da-feature/       # uma pasta numerada por feature pendente/em andamento
@@ -111,7 +114,10 @@ projeto/
 │           ├── tasks.md
 │           ├── build-logs.md
 │           ├── tests.md
-│           └── review.md
+│           ├── review.md
+│           ├── plano-validacao-ambiente.md  # se a spec marcar validacao-ambiente.md
+│           ├── .env                    # credenciais locais, ignoradas pelo Git
+│           └── evidencias/             # diário e artefatos locais, ignorados pelo Git
 ├── .claude/                           # opcional — automação para Claude Code (ver .claude/README.md)
 │   ├── agents/executor-spec-sdd.md
 │   └── skills/executar-specs-pendentes/
@@ -408,6 +414,7 @@ Os guias respondem à pergunta:
 | `go/dados-dynamodb.md` | Se marcado na spec | Padrões de acesso, idempotência, batch, capacidade |
 | `go/dados-postgres.md` | Se marcado na spec | `pgxpool`, transações, locks, `ON CONFLICT`, RDS Proxy |
 | `go/performance-e-custo.md` | Se marcado na spec | Métricas, metodologia de benchmark, pprof, PGO, custo ARM vs x86 |
+| `go/validacao-ambiente.md` | Se marcado na spec | Validação na stack publicada em teste: IAM, evento real, configuração, empacotamento arm64, escritas autorizadas, evidências e limpeza |
 | `go/referencias/estudo-node-vs-go.md` | Não (humanos) | Benchmark de origem, lições e pesquisa Go + ARM + AWS |
 
 Os guias são a **fonte de verdade de idioma Go** do framework. O `architecture-<projeto>.md` pode ser mais específico e, nesse caso, prevalece.

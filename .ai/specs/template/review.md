@@ -54,6 +54,9 @@ Regras CONC-01 a CONC-11 (`.ai/go/concorrencia.md`, seção 5) conferidas em tod
 - Testes relevantes em `tests.md` conferidos: sim/não
 - Todo RN, CA e CC tem teste: sim/não
 - Testes faltando para cobrir esta revisão:
+- Validação em ambiente (se a spec marcar `validacao-ambiente.md`): stage e versão testados, passos executados, RN/CA/CC/DP comprovados, leituras de confirmação:
+- Passos bloqueados, falhas e cobertura não provada:
+- Dados criados no ambiente (IDs), limpeza realizada ou pendente:
 
 ### Fora de escopo identificado
 

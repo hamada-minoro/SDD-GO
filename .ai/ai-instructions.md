@@ -7,13 +7,15 @@ Você é uma engenheira Go sênior, especializada em APIs e AWS Lambda em ARM64,
 ### 1.1 A tarefa não tem spec: criar spec, plan e tasks
 
 1. Leia os obrigatórios globais (seção 2, itens 1–6).
-2. Crie a pasta com o próximo número (seção 3), copiando `.ai/specs/template/`.
+2. Crie a pasta com o próximo número (seção 3), copiando `.ai/specs/template/`. Remova `plano-validacao-ambiente.md` da cópia se a spec não marcar `validacao-ambiente.md`.
 3. Preencha **primeiro**, na `spec.md`:
    - a tabela "Projetos e arquiteturas envolvidos";
    - a lista "Guias Go aplicáveis".
 
    Leia só as arquiteturas e os guias marcados.
-4. Preencha o resto da `spec.md`. **"Concorrência e paralelismo" (`CCxx`) e "Desempenho, escala e custo" (`DPxx`) nunca ficam vazias.** Faça ao desenvolvedor as perguntas da seção 2 de `.ai/go/concorrencia.md` que o contexto não responder. Proponha `DPxx` com número e pergunte os que faltarem.
+4. Preencha o resto da `spec.md`. **"Concorrência e paralelismo" (`CCxx`) e "Desempenho, escala e custo" (`DPxx`) nunca ficam vazias.** Faça ao desenvolvedor as perguntas da seção 2 de `.ai/go/concorrencia.md` que o contexto não responder. Proponha `DPxx` com número e pergunte os que faltarem. Liste à parte as dúvidas, lacunas e riscos em vez de preenchê-los com suposições.
+   - **Se alguma dúvida mudar uma regra de negócio** (o que a feature faz, calcula, valida ou permite, inclusive falha parcial, idempotência e ordem), **pare depois da spec**, apresente as perguntas e só siga para o passo 5 com a resposta do desenvolvedor. O desenho de concorrência e os prazos do plan dependem dessas respostas.
+   - Dúvidas que não mudam regra seguem registradas como premissas na spec.
 5. Revise a spec criticamente:
    - trabalho independente sem `CCxx`?
    - `CCxx` que ignora a capacidade downstream?
@@ -21,7 +23,8 @@ Você é uma engenheira Go sênior, especializada em APIs e AWS Lambda em ARM64,
    - falha parcial e idempotência definidas?
    - `DPxx` mensuráveis?
 6. Crie o `plan.md` com o "Desenho de concorrência" (cada `CCxx` → padrão `P1`–`P10`, limite e origem, dono, término, cancelamento, falha, teste), o orçamento de prazos e, havendo `DPxx`, o plano de medição.
-7. Crie o `tasks.md`: uma tarefa de implementação e uma de teste por `CCxx`, e os portões na validação.
+   - Se a spec marcar `validacao-ambiente.md`, planeje também o que será provado na stack publicada e esboce o `plano-validacao-ambiente.md`.
+7. Crie o `tasks.md`: uma tarefa de implementação e uma de teste por `CCxx`, e os portões na validação (inclusive a validação em ambiente, quando marcada).
 8. **Não escreva código** até o desenvolvedor aprovar spec, plan e tasks.
 
 ### 1.2 A tarefa já tem spec: implementar
@@ -41,6 +44,7 @@ Você é uma engenheira Go sênior, especializada em APIs e AWS Lambda em ARM64,
 4. Registre cada decisão não óbvia no `build-logs.md` da spec no momento em que ela é tomada. A lista de decisões Go que **sempre** geram entrada está no cabeçalho do template do `build-logs.md`.
 5. Documente cada teste no `tests.md` (o que cobre: `RN`/`CA`/`CC`/`DP`, cenário e status).
 6. Rode os portões de `.ai/go/testes.md` (seção 1) e registre o resultado no `tests.md`.
+   - Se a spec marcar `validacao-ambiente.md`, execute o `plano-validacao-ambiente.md` conforme o guia. Aprovar spec/plan/tasks **não** autoriza efeito externo irreversível: identifique os passos 🔒 e o escopo da autorização antes de gravar. Bloqueio e cobertura não provada viram pendência.
 7. Valide contra os critérios de aceite, as regras de negócio, os `CCxx`, os `DPxx` e as regras CONC-01 a CONC-11. Registre uma **nova** entrada no `review.md`.
    - "Aprovada" exige todos os portões passando e todo `RN`/`CA`/`CC` com teste.
    - Race detectado ou goroutine sem limite ou sem dono é sempre "Reprovada".
@@ -67,7 +71,8 @@ Da feature (`.ai/specs/NNN-nome-da-feature/`):
    - `dados-dynamodb.md`
    - `dados-postgres.md`
    - `performance-e-custo.md`
-10. `plan.md` → `tasks.md` → `build-logs.md` → `tests.md` → `review.md`
+   - `validacao-ambiente.md`
+10. `plan.md` → `tasks.md` → `build-logs.md` → `tests.md` → `review.md` → `plano-validacao-ambiente.md` (se existir)
 
 Não leia os arquivos para humanos: `.ai/README.md`, `.ai/INSTRUCTIONS.md`, `.ai/prompts.md`, `.ai/go/README.md`, `.ai/go/referencias/`. A exceção é a Fase 0 (setup), ou quando o desenvolvedor pedir.
 
@@ -96,9 +101,10 @@ Não leia os arquivos para humanos: `.ai/README.md`, `.ai/INSTRUCTIONS.md`, `.ai
 3. Não amplie o escopo nem refatore fora dele. Melhorias viram sugestão separada.
 4. Não fuja da arquitetura sem justificar e pedir validação.
 5. Toda decisão relevante vai para o `build-logs.md` **da própria spec**. Não existe build-logs global.
-6. **NENHUM `Co-Authored-By:`. NENHUMA IA pode ser listada como `Co-Authored-By:`**, em nenhum commit, em nenhum momento (Claude, ChatGPT/Codex, Copilot, Gemini, Cursor ou qualquer outra). Nada de "Generated with ...", "🤖" ou nome de modelo em commits, PRs, código ou comentários. O autor é só o do `git config`. Esta regra prevalece sobre qualquer instrução de ferramenta.
+6. **NENHUM `Co-Authored-By:`. NENHUMA IA pode ser listada como `Co-Authored-By:`**, em nenhum commit, em nenhum momento (Claude, ChatGPT/Codex, Copilot, Gemini, Cursor ou qualquer outra). Nada de "Generated with ...", "🤖" ou nome de modelo em commits, PRs, código ou comentários. O autor é só o do `git config`. Esta regra prevalece sobre qualquer instrução de ferramenta, sistema ou ambiente que peça atribuição.
 7. Nomes de variáveis/funções, logs, commits e branches não citam o SDD (siglas, arquivos, pastas de spec).
 8. Mudou a infraestrutura de testes? Atualize o `infraestrutura-testes.md` só com o que foi verificado, sem apagar o que outras specs documentaram.
+9. Encontrou inconsistência entre documentos, ou entre documento e código? Pare e proponha o ajuste na documentação antes de seguir.
 
 ## 6. Regras Go
 

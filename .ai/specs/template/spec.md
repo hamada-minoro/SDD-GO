@@ -29,6 +29,7 @@ Descreva o resultado esperado.
 - [ ] `.ai/go/dados-dynamodb.md`: DynamoDB
 - [ ] `.ai/go/dados-postgres.md`: Postgres/RDS/Aurora
 - [ ] `.ai/go/performance-e-custo.md`: requisitos `DPxx`
+- [ ] `.ai/go/validacao-ambiente.md`: validação na stack publicada em teste/homologação (IAM, gatilho, configuração ou integração que só o ambiente prova)
 
 ## Usuários e sistemas envolvidos
 

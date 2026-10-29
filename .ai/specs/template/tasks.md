@@ -73,6 +73,8 @@
 
 - [ ] Portões 1–8 de `.ai/go/testes.md` (seção 1) passando, resultado registrado em tests.md
 - [ ] Conferir regras de negócio, CC, DP, permissões, critérios de aceite e casos de erro
+- [ ] Se a spec marcar `validacao-ambiente.md`: preencher e executar plano-validacao-ambiente.md, com confirmação por leitura e evidências mascaradas
+- [ ] Se a spec marcar `validacao-ambiente.md`: atualizar tests.md e review.md com cobertura, bloqueios, dados criados e limpeza
 
 ## Documentação
 
